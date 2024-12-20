@@ -1,0 +1,16 @@
+{
+    "name": "gestionnaire-de-stock",
+    "version": "1.0.0",
+    "description": "Un gestionnaire de stock simple",
+    "main": "inventory.js",
+    "scripts": {
+        "start": "node inventory.js"
+    },
+    "author": "Votre Nom",
+    "license": "ISC",
+    "keywords": [],
+    "type": "commonjs",
+    "dependencies": {
+        "prompt-sync": "^4.2.0"
+    }
+}
