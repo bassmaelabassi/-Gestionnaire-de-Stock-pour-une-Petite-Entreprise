@@ -68,3 +68,53 @@ class Inventory {
         }
     }
 }
+
+const inven = new Inventory();
+let choix;
+
+do {
+    console.log("\n*** Gestionnaire de Stock ***\n");
+    console.log("1. Ajouter un produit.");
+    console.log("2. Afficher tous les produits.");
+    console.log("3. Mettre à jour un produit.");
+    console.log("4. Supprimer un produit.");
+    console.log("5. Quitter");
+
+    choix = parseInt(prompt("Choisissez une option : "));
+
+    switch (choix) {
+        case 1:
+            const name = prompt("Nom du produit : ");
+            const description = prompt("Description : ");
+            const quantity = prompt("Quantité : ");
+            const price = prompt("Prix : ");
+            if (name && description && !isNaN(quantity) && !isNaN(price)) {
+                inven.addProduct(name, description, quantity, price);
+            } else {
+                console.log("Entrées invalides.");
+            }
+            break;
+        case 2:
+            inven.listProducts();
+            break;
+        case 3:
+            const idToUpdate = prompt("ID du produit à mettre à jour : ");
+            const newQuantity = prompt("Nouvelle quantité (laisser vide pour ne pas changer) : ");
+            const newPrice = prompt("Nouveau prix (laisser vide pour ne pas changer) : ");
+            inven.updateProduct(
+                idToUpdate,
+                newQuantity ? parseInt(newQuantity) : undefined,
+                newPrice ? parseFloat(newPrice) : undefined
+            );
+            break;
+        case 4:
+            const idToDelete = prompt("ID du produit à supprimer : ");
+            inven.deleteProduct(idToDelete);
+            break;
+        case 5:
+            console.log("see you !");
+            break;
+        default:
+            console.log("Choix invalide.");
+    }
+} while (choix !== 5);
